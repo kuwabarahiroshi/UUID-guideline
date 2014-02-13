@@ -1,4 +1,4 @@
-UUID-guideline
+UUIDガイドライン
 ==============
 
 ## 前置き: UUIDとUDID
