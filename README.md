@@ -26,7 +26,7 @@ AndroidにおいてはUDIDに準じる値はいくつか取得可能であるが
 
 3. [BEENOS推奨コード](#beenos%E6%8E%A8%E5%A5%A8%E3%82%B3%E3%83%BC%E3%83%89)
 
-## <a id="iOS">iOSにおけるID生成方式</a>
+## <a name="iOS">iOSにおけるID生成方式</a>
 
 
 ### 1. `CFUUID`
@@ -110,7 +110,7 @@ NSString *idForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDStri
   Appleのドキュメントで保証されたAPIではないので説明割愛（今後利用できなくなる可能性があるため）
 
 
-## <a id="android">AndroidにおけるID生成方式</a>
+## <a name="android">AndroidにおけるID生成方式</a>
 
 [参照](http://android-developers.blogspot.jp/2011/03/identifying-app-installations.html)
 
