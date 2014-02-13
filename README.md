@@ -150,6 +150,7 @@ Settings.Secure.ANDROID_ID
 
 #### pros
   * バグのない端末では概ねUDIDとして機能する
+
 #### cons
   * API8 (Android 2.2) では信頼できない
   * root化されたAndroidでは値を任意に変更できる
@@ -159,11 +160,11 @@ Settings.Secure.ANDROID_ID
 ## <a name="recommended-implementation">BEENOS推奨コード</a>
 
   1. iOS
-    [iOS/NSUUID+Persistence.h](iOS/NSUUID+Persistence.h)
-    [iOS/NSUUID+Persistence.m](iOS/NSUUID+Persistence.m)
+    - [iOS/NSUUID+Persistence.h](iOS/NSUUID+Persistence.h)
+    - [iOS/NSUUID+Persistence.m](iOS/NSUUID+Persistence.m)
 
   2. Android
-    [android/UIID.java](android/UIID.java)
+    - [android/UIID.java](android/UIID.java)
 
 ## <a name="reference">参考</a>
   * [The Developer's Guide to Unique Identifiers](http://www.doubleencore.com/2013/04/unique-identifiers/)
