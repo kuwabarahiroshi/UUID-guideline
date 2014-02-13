@@ -21,13 +21,11 @@ AndroidにおいてはUDIDに準じる値はいくつか取得可能であるが
 ## 目次
 
 1. [iOSにおけるID生成方式](#iOS)
-
 2. [AndroidにおけるID生成方式](#android)
-
-3. [BEENOS推奨コード](#beenos%E6%8E%A8%E5%A5%A8%E3%82%B3%E3%83%BC%E3%83%89)
+3. [BEENOS推奨コード](#recommended-implementation)
+4. [参考](#reference)
 
 ## <a name="iOS">iOSにおけるID生成方式</a>
-
 
 ### 1. `CFUUID`
 
@@ -112,8 +110,6 @@ NSString *idForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDStri
 
 ## <a name="android">AndroidにおけるID生成方式</a>
 
-[参照](http://android-developers.blogspot.jp/2011/03/identifying-app-installations.html)
-
 ### 1. `IMEI, MEID, or ESN`
 
 #### 取得方法
@@ -160,7 +156,7 @@ Settings.Secure.ANDROID_ID
   * 一部のベンダーの端末で全て同じ値([9774d56d682e549c](http://www.google.com/search?sourceid=chrome&ie=UTF-8&q=9774d56d682e549c))が返ってくる
   * 工場出荷状態にリセットしたらANDROID_IDもリセットされる
 
-## BEENOS推奨コード
+## <a name="recommended-implementation">BEENOS推奨コード</a>
 
   1. iOS
     [iOS/NSUUID+Persistence.h](iOS/NSUUID+Persistence.h)
@@ -168,3 +164,9 @@ Settings.Secure.ANDROID_ID
 
   2. Android
     [android/UIID.java](android/UIID.java)
+
+## <a name="reference">参考</a>
+  * [The Developer's Guide to Unique Identifiers](http://www.doubleencore.com/2013/04/unique-identifiers/)
+  * [What Apple's 'Limit Ad Tracking' Means to Users](http://www.doubleencore.com/2013/04/what-apples-limit-ad-tracking-feature-actually-means-to-users/)
+  * [Identifying App Installations](http://android-developers.blogspot.jp/2011/03/identifying-app-installations.html)
+  * [Is there a unique Android device ID?](http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id)
