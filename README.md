@@ -8,7 +8,7 @@ UUID-guideline
 
   - **UDID**
 
-      端末ごとにユニークなID
+    端末ごとにユニークなID
 
 
 iOSではiOS5以降でUDIDは非推奨APIとなり、iOS7以降ではAPI自体が削除されている。
@@ -20,17 +20,13 @@ AndroidにおいてはUDIDに準じる値はいくつか取得可能であるが
 
 ## 目次
 
-1. [iOSにおけるID生成方式](#ios%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bid%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F)
+1. [iOSにおけるID生成方式](#iOS)
 
-2. [AndroidにおけるID生成方式](#android%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bid%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F)
+2. [AndroidにおけるID生成方式](#android)
 
 3. [BEENOS推奨コード](#beenos%E6%8E%A8%E5%A5%A8%E3%82%B3%E3%83%BC%E3%83%89)
 
-  1. [iOS](#iOS)
-
-  2. [Android](#Android)
-
-## iOSにおけるID生成方式
+## <a id="iOS">iOSにおけるID生成方式</a>
 
 
 ### 1. `CFUUID`
@@ -105,6 +101,7 @@ NSString *idForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDStri
 #### cons
   * iOS6以降で利用可能
   * アプリ再インストールによりリセットされる（同一ベンダーのアプリが他に無かった場合）
+  * 一部の端末で同一の値が返ってくる [参照](http://stackoverflow.com/questions/12605257/the-advertisingidentifier-and-identifierforvendor-return-00000000-0000-0000-000)
 
 ### 5. `UDID`
   iOS5以降で非推奨のため説明割愛
@@ -113,13 +110,13 @@ NSString *idForVendor = [[[UIDevice currentDevice] identifierForVendor] UUIDStri
   Appleのドキュメントで保証されたAPIではないので説明割愛（今後利用できなくなる可能性があるため）
 
 
-## AndroidにおけるID生成方式
+## <a id="android">AndroidにおけるID生成方式</a>
 
 [参照](http://android-developers.blogspot.jp/2011/03/identifying-app-installations.html)
 
 ### 1. `IMEI, MEID, or ESN`
 
-#### 生成方法
+#### 取得方法
 
 ```java
 TelephonyManager.getDeviceId()
@@ -130,7 +127,7 @@ TelephonyManager.getDeviceId()
 
 #### cons
   * 電話以外のデバイスでは利用できない
-  * READ_PHONE_STATEパーミッションが必要
+  * READ_PHONE_STATEパーミッションが必要（嫌がられやすい権限のひとつ）
   * 一部の端末でバグが確認されている（0や*などを返す）
 
 ### 2. `Mac Address`
@@ -138,5 +135,36 @@ WiFiまたはBlueToothをOFFにしている場合は取得できないため非�
 
 ### 3. `Serial Number`
 
+#### 取得方法
+
+```java
+android.os.Build.SERIAL
+```
+
+#### cons
+  * API>=9 (Android 2.3以上) で利用可能
+
+### 4. `ANDROID_ID`
+
+#### 取得方法
+
+```java
+Settings.Secure.ANDROID_ID
+```
+
+#### pros
+  * バグのない端末では概ねUDIDとして機能する
+#### cons
+  * API8 (Android 2.2) では信頼できない
+  * root化されたAndroidでは値を任意に変更できる
+  * 一部のベンダーの端末で全て同じ値([9774d56d682e549c](http://www.google.com/search?sourceid=chrome&ie=UTF-8&q=9774d56d682e549c))が返ってくる
+  * 工場出荷状態にリセットしたらANDROID_IDもリセットされる
+
 ## BEENOS推奨コード
 
+  1. iOS
+    [iOS/NSUUID+Persistence.h](iOS/NSUUID+Persistence.h)
+    [iOS/NSUUID+Persistence.m](iOS/NSUUID+Persistence.m)
+
+  2. Android
+    [android/UIID.java](android/UIID.java)
