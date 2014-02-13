@@ -164,7 +164,7 @@ Settings.Secure.ANDROID_ID
     - [iOS/NSUUID+Persistence.m](iOS/NSUUID+Persistence.m)
 
   2. Android
-    - [android/UIID.java](android/UIID.java)
+    - [Android/UIID.java](Android/UIID.java)
 
 ## <a name="reference">参考</a>
   * [The Developer's Guide to Unique Identifiers](http://www.doubleencore.com/2013/04/unique-identifiers/)
