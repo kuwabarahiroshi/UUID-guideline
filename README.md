@@ -77,6 +77,7 @@ NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UU
   * AdSupport.frameworkが必要
   * 右記操作により、リセットされることもある
     `設定 > プライバシー > 広告 > Advertising Identifierをリセット`
+  * 広告表示せずにadvertisingIdentifierを使用するとリジェクトされることがある
 
 #### 備考
 iOSの設定で
